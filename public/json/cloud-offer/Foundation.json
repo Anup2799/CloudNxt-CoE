@@ -1,0 +1,17 @@
+[
+    {
+      "title": "ZenCloudBase",
+      "description": "Accelerator to configure and deploy the cloud foundation, Multi account structure,Identity and access management,centralized logging and auditing framework for enterprise,",
+      "buttonText": "Enquire"
+    },
+    {
+      "title": "ZenCloudCatalog",
+      "description": "Accelerator for automated cloud services deployment and configuration on AWS,Azure and GCP with well architected guidelines",
+      "buttonText": "Enquire"
+    },
+    {
+      "title": "ClickDeploy",
+      "description": "Devops pipeline to deploy App / Infra integrated with testing framework,SAST,DAST integration.",
+      "buttonText": "Enquire"
+    }
+  ]

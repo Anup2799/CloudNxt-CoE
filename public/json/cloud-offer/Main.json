@@ -1,0 +1,27 @@
+[
+    {
+      "image": "/images/offer.gif",
+      "title": "Strategy",
+      "description": "Description of objective 1.",
+      "link": "/Strategy"
+    },
+    {
+      "image": "/images/offer.gif",
+      "title": "Foundation",
+      "description": "Description of objective 2.",
+      "link": "/Foundation"
+    },
+    {
+      "image": "/images/offer.gif",
+      "title": "Migrate",
+      "description": "Description of objective 2.",
+      "link": "/Migrate-Modernize"
+    },
+    {
+      "image": "/images/offer.gif",
+      "title": "Operation",
+      "description": "Description of objective 2.",
+      "link": "/Operations"
+    }
+  ]
+  

@@ -1,0 +1,22 @@
+[
+    {
+      "title": "Transform2Micro",
+      "description": "Framework and accelerators totransform monolithic applications to cloud native microservice architecture (MASA) by leveraging AIEngineering Buddy",
+      "buttonText": "Enquire"
+    },
+    {
+      "title": "ZenMod - Mainframe Modernization",
+      "description": "Framework to migrate / modernize mainframe workloads to cloud",
+      "buttonText": "Enquire"
+    },
+    {
+      "title": "ZContainerShift",
+      "description": "Modernization through Containerizing the application and deploy them on Kubernetes engine anywhere",
+      "buttonText": "Enquire"
+    },
+    {
+      "title": "Industry Vertical Cloud",
+      "description": "Reference Architectures for various industry segments considering business, data, and compliance needs of their segment.",
+      "buttonText": "Enquire"
+    }
+  ]

@@ -1,0 +1,22 @@
+[
+    {
+      "title": "ZenCompass – Cloud Readiness Assessment Tool",
+      "description": "Gen AI based accelerator for assessment and recommendation for cloud adoption",
+      "buttonText": "Enquire"
+    },
+    {
+      "title": "ZenWAF - Well Architect Framework assessment Tool",
+      "description": "Accelerator to perform well architected review for Cloud Workloads",
+      "buttonText": "Enquire"
+    },
+    {
+      "title": "MainframeLens - Mainframe Modernization assessment",
+      "description": "Framework for mainframe assessment to migrate to cloud",
+      "buttonText": "Enquire"
+    },
+    {
+      "title": "ZenVanguard -Cloud CoE(CCoE)",
+      "description": "Framework to accelerate cloud adoption and roll out cloud practices,technologies by setting up Cloud COE unit.",
+      "buttonText": "Enquire"
+    }
+  ]

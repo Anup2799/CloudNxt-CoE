@@ -1,0 +1,22 @@
+[
+    {
+      "title": "Cloud SmartOps",
+      "description": "Integrated Observability platform on top of Vinci to provide single pane of dashboard across multiand hybrid clouds",
+      "buttonText": "Enquire"
+    },
+    {
+      "title": "Cloud FinOps",
+      "description": "Tooling and framework to Know,Control, Optimize cloud spend (FinOps)",
+      "buttonText": "Enquire"
+    },
+    {
+      "title": "CloudSecOps Assessment",
+      "description": "Framework to ensure clients meet security, compliance, cost, resiliency, and operations best practices",
+      "buttonText": "Enquire"
+    },
+    {
+      "title": "Cloud Sustainability Assessment",
+      "description": "Maturity assessment Frameworkand benchmarking to enable clients to improve sustainability of their software ecosystem",
+      "buttonText": "Enquire"
+    }
+  ]
