@@ -20,7 +20,7 @@ const Home = () => {
         padding: { xs: '0', sm: '0' },
         margin: '0',
         backgroundColor: '#f0f0f0',
-        minHeight: '100vh',
+        Height: '100vh',
       }}
     >
       <Box
