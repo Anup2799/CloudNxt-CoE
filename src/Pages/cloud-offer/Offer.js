@@ -8,7 +8,7 @@ const Main = () => {
 
   useEffect(() => {
     // Fetch the JSON data
-    fetch('./json/cloud-offer/Main.json')
+    fetch('/json/cloud-offer/Main.json')
       .then((response) => response.json())
       .then((data) => {
         console.log('Data fetched:', data); // Debugging line

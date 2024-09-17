@@ -8,7 +8,7 @@ const Cloudbase = () => {
 
   useEffect(() => {
     // Fetch the JSON data
-    fetch('./json/Acc/Cloudbase.json')
+    fetch('/json/Acc/Cloudbase.json')
       .then((response) => response.json())
       .then((data) => {
         console.log('Data fetched:', data); // Debugging line

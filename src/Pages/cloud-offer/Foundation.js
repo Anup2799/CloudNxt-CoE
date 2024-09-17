@@ -54,7 +54,7 @@ const Foundation = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('./json/cloud-offer/Foundation.json')
+    fetch('/json/cloud-offer/Foundation.json')
       .then(response => response.json())
       .then(data => setCards(data))
       .catch(error => console.error('Error fetching card data:', error));

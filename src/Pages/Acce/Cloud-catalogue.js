@@ -11,7 +11,7 @@ const Catalog = () => {
 
   useEffect(() => {
     // Fetch the JSON data
-    fetch('./json/Acc/Cloud-Catalog.json')
+    fetch('/json/Acc/Cloud-Catalog.json')
       .then((response) => response.json())
       .then((data) => setObjectives(data))
       .catch((error) => console.error('Error fetching objectives:', error));
