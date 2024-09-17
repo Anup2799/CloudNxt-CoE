@@ -10,6 +10,7 @@ import Catelog from './Pages/Acce/Cloud-catalogue';
 import Offer from './Pages/cloud-offer/Offer';
 import From from './Pages/From-page/From';
 import Cloudbase from './Pages/Acce/Cloudbase';
+import Standard from './Pages/Acce/Standard'
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
             <Route path="/Offer" element={<Offer />} />
             <Route path="/Cloudbase" element={<Cloudbase/>} />
             <Route path="/From" element={<From />} />
+            <Route path="/Standard" element={<Standard />} />
             {/* Add more routes here as needed */}
           </Routes>
         </div>

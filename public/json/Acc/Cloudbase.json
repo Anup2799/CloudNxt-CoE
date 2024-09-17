@@ -3,25 +3,25 @@
       "image": "/images/offer.gif",
       "title": "Standard",
       "description": "Description of objective 1.",
-      "link": "/Strategy"
+      "link": "/Standard"
     },
     {
       "image": "/images/offer.gif",
       "title": "Healthcare",
       "description": "Description of objective 2.",
-      "link": "/Foundation"
+      "link": "/Standard"
     },
     {
       "image": "/images/offer.gif",
       "title": "Finance",
       "description": "Description of objective 2.",
-      "link": "/Migrate-Modernize"
+      "link": "/Standard"
     },
     {
       "image": "/images/offer.gif",
       "title": "US Government",
       "description": "Description of objective 2.",
-      "link": "/Operations"
+      "link": "/Standard"
     }
   ]
   
