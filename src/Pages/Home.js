@@ -36,7 +36,7 @@ const Home = () => {
         }}
       >
         <img
-          src="/Images/Home-image2.webp" 
+          src="/images/Home-image2.webp" 
           alt="CloudNxt"
           style={{ 
             width: '100%', 
