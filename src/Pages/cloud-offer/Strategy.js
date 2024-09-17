@@ -54,7 +54,7 @@ const Strategy = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('./json/cloud-offer/Strategy.json')
+    fetch('/json/cloud-offer/Strategy.json')
       .then(response => response.json())
       .then(data => setCards(data))
       .catch(error => console.error('Error fetching card data:', error));
