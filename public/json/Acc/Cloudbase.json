@@ -1,0 +1,27 @@
+[
+    {
+      "image": "/images/offer.gif",
+      "title": "Standard",
+      "description": "Description of objective 1.",
+      "link": "/Strategy"
+    },
+    {
+      "image": "/images/offer.gif",
+      "title": "Healthcare",
+      "description": "Description of objective 2.",
+      "link": "/Foundation"
+    },
+    {
+      "image": "/images/offer.gif",
+      "title": "Finance",
+      "description": "Description of objective 2.",
+      "link": "/Migrate-Modernize"
+    },
+    {
+      "image": "/images/offer.gif",
+      "title": "US Government",
+      "description": "Description of objective 2.",
+      "link": "/Operations"
+    }
+  ]
+  
