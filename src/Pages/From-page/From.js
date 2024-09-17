@@ -239,8 +239,8 @@ const Ec2Form = ({ open, handleClose }) => {
                     <Grid item xs={12}>
                       <TextField
                         fullWidth
-                        label="EC2 Instance Name"
-                        name="EC2_INSTANCE_NAME"
+                        label="ECS Name"
+                        name="ECS_NAME"
                         value={formData.EC2_INSTANCE_NAME}
                         onChange={handleChange}
                         error={errors.EC2_INSTANCE_NAME}
