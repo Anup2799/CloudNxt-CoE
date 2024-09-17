@@ -1,8 +1,8 @@
 [
     {
       "image": "/images/Catalog3.gif",
-      "title": "Elastic Compute Cloud | AWS EC2",
-      "description": "EC2 provides scalable virtual servers in the cloud, allowing you to run applications on virtual machines with flexible compute capacity.",
+      "title": "Elastic Container Service | AWS ECS",
+      "description": "ECS is a fully managed container orchestration service that simplifies the deployment and management of Docker containers on a scalable cluster.",
       "link": "/From"
     },
     {
@@ -13,8 +13,8 @@
     },
     {
       "image": "/images/Catalog3.gif",
-      "title": "Elastic Container Service | AWS ECS",
-      "description": "ECS is a fully managed container orchestration service that simplifies the deployment and management of Docker containers on a scalable cluster.",
+      "title": "Elastic Compute Cloud | AWS EC2",
+      "description": "EC2 provides scalable virtual servers in the cloud, allowing you to run applications on virtual machines with flexible compute capacity.",
       "link": "https://example.com/2"
     },
     {

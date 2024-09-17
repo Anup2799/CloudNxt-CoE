@@ -201,7 +201,7 @@ const Ec2Form = ({ open, handleClose }) => {
           fullWidth
         >
           <DialogTitle className={classes.dialogTitle}>
-            <Typography variant="h6">EC2 Configuration</Typography>
+            <Typography variant="h6">ECS Configuration</Typography>
           </DialogTitle>
           <DialogContent className={classes.dialogContent}>
             {loading && !showThankYou ? (
@@ -215,7 +215,7 @@ const Ec2Form = ({ open, handleClose }) => {
                   Success!
                 </Typography>
                 <Typography variant="body1">
-                  Your EC2 instance request is being processed. Thank you!
+                  Your ECS request is being processed. Thank you!
                 </Typography>
                 <div className={classes.buttonContainer}>
                   <Button
