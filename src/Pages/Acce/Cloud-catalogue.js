@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, Grid, Card, CardContent } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import Form from '../From-page/From'; // Updated path
+import From from '../From-page/From'; // Adjusted path
 
 const Catalog = () => {
   const [objectives, setObjectives] = useState([]);
@@ -10,7 +10,6 @@ const Catalog = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    // Fetch the JSON data
     fetch('/json/Acc/Cloud-Catalog.json')
       .then((response) => response.json())
       .then((data) => setObjectives(data))
@@ -27,14 +26,8 @@ const Catalog = () => {
     setSelectedObjective(null);
   };
 
-  const handleKnowMoreClick = (link, objective) => {
-    if (link.startsWith('/')) {
-      // If the link is a path (e.g., '/From'), open the form with data
-      handleOpenForm(objective);
-    } else {
-      // Otherwise, open the link in the same tab
-      window.location.href = link;
-    }
+  const handleKnowMoreClick = (objective) => {
+    handleOpenForm(objective);
   };
 
   return (
@@ -80,11 +73,10 @@ const Catalog = () => {
                 margin: '0 auto',
                 '&:hover': {
                   transform: 'scale(1.05)',
-                }
+                },
               }}
             >
               <CardContent sx={{ flexGrow: 1 }}>
-                {/* Title */}
                 <Typography
                   variant="h6"
                   sx={{
@@ -99,8 +91,6 @@ const Catalog = () => {
                 >
                   {objective.title}
                 </Typography>
-
-                {/* Image */}
                 <Box
                   sx={{
                     display: 'flex',
@@ -114,8 +104,6 @@ const Catalog = () => {
                     style={{ maxWidth: '100%', height: 'auto', maxHeight: '100px' }}
                   />
                 </Box>
-
-                {/* Description */}
                 <Typography
                   variant="body2"
                   sx={{
@@ -131,8 +119,6 @@ const Catalog = () => {
                   {objective.description}
                 </Typography>
               </CardContent>
-
-              {/* Know More Text aligned to the right */}
               <Box
                 sx={{
                   display: 'flex',
@@ -143,7 +129,7 @@ const Catalog = () => {
                 }}
               >
                 <Typography
-                  onClick={() => handleKnowMoreClick(objective.link, objective)}
+                  onClick={() => handleKnowMoreClick(objective)}
                   sx={{
                     fontFamily: 'Poppins',
                     fontSize: '14px',
@@ -163,9 +149,8 @@ const Catalog = () => {
         ))}
       </Grid>
 
-      {/* Render Form component as a popup */}
       {selectedObjective && (
-        <Form open={open} handleClose={handleCloseForm} objective={selectedObjective} />
+        <From open={open} handleClose={handleCloseForm} objective={selectedObjective} />
       )}
     </Box>
   );

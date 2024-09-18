@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     paddingRight: '40px',
-    minHeight: '60px', // Adjust the height of the dialog title
+    minHeight: '60px',
   },
   dialogContent: {
     padding: '24px',
@@ -110,16 +110,67 @@ const CircularProgressWithLabel = (props) => (
   </Box>
 );
 
-const Ec2Form = ({ open, handleClose }) => {
+const formConfigs = {
+  ecs: [
+    { label: 'ECS Name', name: 'ECS_NAME', required: true },
+    { label: 'Task Definition', name: 'TASK_DEFINITION', required: true },
+    { label: 'Cluster Name', name: 'CLUSTER_NAME', required: true },
+    { label: 'AWS Region', name: 'AWS_REGION', defaultValue: 'us-west-2', readOnly: true },
+  ],
+  vpc: [
+    { label: 'VPC Name', name: 'VPC_NAME', required: true },
+    { label: 'CIDR Block', name: 'CIDR_BLOCK', required: true },
+    { label: 'AWS Region', name: 'AWS_REGION', defaultValue: 'us-west-2', readOnly: true },
+  ],
+  ec2: [
+    { label: 'EC2 Instance Name', name: 'EC2_INSTANCE_NAME', required: true },
+    { label: 'Key-Pair Name', name: 'KEY_PAIR_NAME', required: true },
+    { label: 'AWS Region', name: 'AWS_REGION', defaultValue: 'us-west-2', readOnly: true },
+  ],
+  s3: [
+    { label: 'Bucket Name', name: 'BUCKET_NAME', required: true },
+    { label: 'AWS Region', name: 'AWS_REGION', defaultValue: 'us-west-2', readOnly: true },
+  ],
+  sns: [
+    { label: 'Topic Name', name: 'TOPIC_NAME', required: true },
+    { label: 'Display Name', name: 'DISPLAY_NAME', required: true },
+    { label: 'AWS Region', name: 'AWS_REGION', defaultValue: 'us-west-2', readOnly: true },
+  ],
+  lambda: [
+    { label: 'Function Name', name: 'FUNCTION_NAME', required: true },
+    { label: 'Runtime', name: 'RUNTIME', required: true },
+    { label: 'Handler', name: 'HANDLER', required: true },
+    { label: 'AWS Region', name: 'AWS_REGION', defaultValue: 'us-west-2', readOnly: true },
+  ],
+  kms: [
+    { label: 'Key Alias', name: 'KEY_ALIAS', required: true },
+    { label: 'Description', name: 'DESCRIPTION', required: false },
+    { label: 'AWS Region', name: 'AWS_REGION', defaultValue: 'us-west-2', readOnly: true },
+  ],
+  rds: [
+    { label: 'DB Instance Identifier', name: 'DB_INSTANCE_ID', required: true },
+    { label: 'DB Instance Class', name: 'DB_INSTANCE_CLASS', required: true },
+    { label: 'AWS Region', name: 'AWS_REGION', defaultValue: 'us-west-2', readOnly: true },
+  ],
+  eks: [
+    { label: 'Cluster Name', name: 'CLUSTER_NAME', required: true },
+    { label: 'Role ARN', name: 'ROLE_ARN', required: true },
+    { label: 'Kubernetes Version', name: 'K8S_VERSION', required: true },
+    { label: 'AWS Region', name: 'AWS_REGION', defaultValue: 'us-west-2', readOnly: true },
+  ],
+  dynamodb: [
+    { label: 'Table Name', name: 'TABLE_NAME', required: true },
+    { label: 'Read Capacity Units', name: 'READ_CAPACITY_UNITS', required: true },
+    { label: 'Write Capacity Units', name: 'WRITE_CAPACITY_UNITS', required: true },
+    { label: 'AWS Region', name: 'AWS_REGION', defaultValue: 'us-west-2', readOnly: true },
+  ],
+};
+
+const Form = ({ open, handleClose, objective }) => {
   const classes = useStyles();
-  const [formData, setFormData] = useState({
-    EC2_INSTANCE_NAME: '',
-    KEY_PAIR_NAME: '',
-    AWS_DEFAULT_REGION: 'us-west-2',
-  });
-  const [errors, setErrors] = useState({
-    EC2_INSTANCE_NAME: false,
-  });
+  const [service] = useState(objective?.service || 'ecs');
+  const [formData, setFormData] = useState({});
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showThankYou, setShowThankYou] = useState(false);
@@ -138,44 +189,68 @@ const Ec2Form = ({ open, handleClose }) => {
   };
 
   const validateForm = () => {
-    const newErrors = {
-      EC2_INSTANCE_NAME: !formData.EC2_INSTANCE_NAME,
-    };
+    const newErrors = {};
+    const fields = formConfigs[service] || [];
+    fields.forEach((field) => {
+      if (field.required && !formData[field.name]) {
+        newErrors[field.name] = true;
+      }
+    });
     setErrors(newErrors);
     return !Object.values(newErrors).includes(true);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      setLoading(true);
-      setProgress(0); // Reset progress
-      setBackendError(''); // Clear previous error messages
-      setShowErrorPopup(false); // Hide error popup
 
-      const timer = setInterval(() => {
-        setProgress((prevProgress) => {
-          if (prevProgress === 100) {
-            clearInterval(timer);
-            setLoading(false);
-            if (!backendError) {
-              setShowThankYou(true);
-            }
+    // Validate the form and check if the service is defined
+    if (!validateForm()) {
+      return; // Stop submission if form validation fails
+    }
+
+    // Construct payload with all required fields
+    const payload = {
+      service: service, // e.g., 'ecs', 'ec2', etc.
+      AWS_ACCESS_KEY_ID: formData.AWS_ACCESS_KEY_ID || process.env.AWS_ACCESS_KEY_ID,
+      AWS_SECRET_ACCESS_KEY: formData.AWS_SECRET_ACCESS_KEY || process.env.AWS_SECRET_ACCESS_KEY,
+      AWS_DEFAULT_REGION: formData.AWS_DEFAULT_REGION || process.env.AWS_DEFAULT_REGION,
+    };
+
+    console.log('Payload:', payload); // Debug log (remove or sanitize in production)
+
+    // Show loading spinner and start progress bar
+    setLoading(true);
+    setProgress(0); // Reset progress
+    setBackendError(''); // Clear previous error messages
+    setShowErrorPopup(false); // Hide error popup
+
+    // Set up progress simulation (this should ideally be tied to real progress updates from the backend)
+    const timer = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress === 100) {
+          clearInterval(timer);
+          setLoading(false);
+          if (!backendError) {
+            setShowThankYou(true);
           }
-          return Math.min(prevProgress + 10, 100);
-        });
-      }, 800);
+        }
+        return Math.min(prevProgress + 10, 100);
+      });
+    }, 800);
 
-      try {
-        await axios.post('http://localhost:5000/trigger-pipeline', formData);
-      } catch (error) {
-        clearInterval(timer); // Stop the progress bar if there's an error
-        setLoading(false); // Stop loading spinner
-        setBackendError(error.response ? error.response.data.message : error.message);
-        setShowErrorPopup(true); // Show the error popup
-      }
+    try {
+      const response = await axios.post('http://localhost:5000/trigger-pipeline', payload);
+      // Handle successful response if needed
+      console.log('Response:', response.data);
+    } catch (error) {
+      // Handle error
+      clearInterval(timer); // Stop the progress bar if there's an error
+      setLoading(false); // Stop loading spinner
+      setBackendError(error.response ? error.response.data.message : error.message);
+      setShowErrorPopup(true); // Show the error popup
     }
   };
+
 
   const handleEditForm = () => {
     setShowThankYou(false); // Hide the thank you message
@@ -190,6 +265,28 @@ const Ec2Form = ({ open, handleClose }) => {
     handleClose(); // Optionally close the main dialog
   };
 
+  const renderFormFields = () => {
+    const fields = formConfigs[service] || [];
+    return fields.map((field) => (
+      <TextField
+        key={field.name}
+        label={field.label}
+        name={field.name}
+        value={formData[field.name] || field.defaultValue || ''}
+        onChange={handleChange}
+        required={field.required}
+        InputProps={{
+          readOnly: field.readOnly,
+        }}
+        fullWidth
+        margin="normal"
+        error={errors[field.name]}
+        helperText={errors[field.name] ? 'Required' : ''}
+        className={classes.textField}
+      />
+    ));
+  };
+
   return (
     <>
       {/* Main Form Dialog */}
@@ -201,7 +298,7 @@ const Ec2Form = ({ open, handleClose }) => {
           fullWidth
         >
           <DialogTitle className={classes.dialogTitle}>
-            <Typography variant="h6">ECS Configuration</Typography>
+            <Typography variant="h6">{`${service.toUpperCase()} Service-Form`}</Typography>
           </DialogTitle>
           <DialogContent className={classes.dialogContent}>
             {loading && !showThankYou ? (
@@ -215,7 +312,7 @@ const Ec2Form = ({ open, handleClose }) => {
                   Success!
                 </Typography>
                 <Typography variant="body1">
-                  Your ECS request is being processed. Thank you!
+                  Your request is being processed. Thank you!
                 </Typography>
                 <div className={classes.buttonContainer}>
                   <Button
@@ -233,44 +330,11 @@ const Ec2Form = ({ open, handleClose }) => {
                 </div>
               </div>
             ) : (
-              <>
-                <form onSubmit={handleSubmit} className={classes.formContainer}>
-                  <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                      <TextField
-                        fullWidth
-                        label="ECS Name"
-                        name="EC2_INSTANCE_NAME"
-                        value={formData.EC2_INSTANCE_NAME}
-                        onChange={handleChange}
-                        error={errors.EC2_INSTANCE_NAME}
-                        helperText={errors.EC2_INSTANCE_NAME && "Required"}
-                        className={classes.textField}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        fullWidth
-                        label="Key-Pair Name"
-                        name="KEY_PAIR_NAME"
-                        value={formData.KEY_PAIR_NAME}
-                        onChange={handleChange}
-                        className={classes.textField}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        fullWidth
-                        label="AWS Default Region"
-                        name="AWS_DEFAULT_REGION"
-                        value={formData.AWS_DEFAULT_REGION}
-                        InputProps={{ readOnly: true }}
-                        className={classes.textField}
-                      />
-                    </Grid>
-                  </Grid>
-                </form>
-              </>
+              <form onSubmit={handleSubmit} className={classes.formContainer}>
+                <Grid container spacing={2}>
+                  {renderFormFields()}
+                </Grid>
+              </form>
             )}
           </DialogContent>
           <DialogActions>
@@ -301,9 +365,9 @@ const Ec2Form = ({ open, handleClose }) => {
         <DialogTitle className={classes.dialogTitle}>
           <Typography variant="h6">Error</Typography>
         </DialogTitle>
-        <DialogContent className={classes.dialogContent}>
+        <DialogContent>
           <Typography variant="body1" className={classes.errorMessage}>
-            {backendError || 'An unexpected error occurred. Please try again.'}
+            {backendError}
           </Typography>
         </DialogContent>
         <DialogActions>
@@ -319,4 +383,4 @@ const Ec2Form = ({ open, handleClose }) => {
   );
 };
 
-export default Ec2Form;
+export default Form;
