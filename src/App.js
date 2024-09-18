@@ -40,7 +40,7 @@ function App() {
         <div style={{ flexGrow: 1 }}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/strategy" element={<Strategy />} />
+            <Route path="/Strategy" element={<Strategy />} />
             <Route path="/Foundation" element={<Foundation />} />
             <Route path="/Migrate-Modernize" element={<Migrate />} />
             <Route path="/Operations" element={<Operations />} />
