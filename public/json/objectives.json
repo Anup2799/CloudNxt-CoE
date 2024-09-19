@@ -1,36 +1,36 @@
 [
   {
-    "image": "./Image/Strategy.gif",
+    "image": "./Image/Off.png",
     "title": "Cloud Offerings",
     "description": "Comprehensive cloud services like computing, storage, and networking for business needs.",
     "link": "/Cloudo"
   },
   {
-    "image": "./Image/Strategy.gif",
+    "image": "./Image/Kit.png",
     "title": "Delivery Kits",
     "description": "Tools and templates for faster cloud deployment and efficient implementation.",
     "link": "https://example.com/2"
   },
   {
-    "image": "./Image/Strategy.gif",
+    "image": "./Image/Acc.png",
     "title": "Accelerators",
     "description": "Pre-built solutions to speed up cloud adoption and development processes.",
     "link": "https://example.com/2"
   },
   {
-    "image": "./Image/Strategy.gif",
+    "image": "./Image/Stu.png",
     "title": "Case Studies",
     "description": "Real-world examples of successful cloud implementations and outcomes.",
     "link": "https://example.com/2"
   },
   {
-    "image": "./Image/Strategy.gif",
+    "image": "./Image/Ref.png",
     "title": "Reference Architectures",
     "description": "Cloud design blueprints for building secure and scalable infrastructures.",
     "link": "https://example.com/3"
   },
   {
-    "image": "./Image/Strategy.gif",
+    "image": "./Image/Paper.png",
     "title": "White Papers/ PoVs",
     "description": "Expert reports on cloud trends, strategies, and best practices.",
     "link": "https://example.com/3"

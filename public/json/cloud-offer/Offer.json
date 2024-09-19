@@ -1,24 +1,24 @@
 [
     {
-      "image": "./Image/Strategy.gif",
+      "image": "./Image/Str.png",
       "title": "Strategy",
       "description": "Description of objective 1.",
       "link": "/Strategy"
     },
     {
-      "image": "./Image/Strategy.gif",
+      "image": "./Image/Fou.png",
       "title": "Foundation",
       "description": "Description of objective 2.",
       "link": "/Foundation"
     },
     {
-      "image": "./Image/Strategy.gif",
+      "image": "./Image/Mig.png",
       "title": "Migrate",
       "description": "Description of objective 2.",
       "link": "/Migrate-Modernize"
     },
     {
-      "image": "./Image/Strategy.gif",
+      "image": "./Image/Ope.png",
       "title": "Operation",
       "description": "Description of objective 2.",
       "link": "/Operations"
