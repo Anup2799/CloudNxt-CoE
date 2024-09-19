@@ -1,53 +1,96 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Card, CardContent, Typography, Button, Grid } from '@mui/material';
+import { Box, Card, CardContent, Typography, Button, Grid, Breadcrumbs, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/system';
 
 // Styled component for hover animation
-const HoverCard = styled(Card)({
+const HoverCard = styled(Card)(({ theme }) => ({
   transition: 'transform 0.3s ease-in-out',
   '&:hover': {
-    transform: 'scale(1.05)'
+    transform: 'scale(1.03)',
   },
-  height: '220px', // Fixed height for the cards
-  width: '100%', // Ensure full width inside the grid container
-  display: 'flex', // To make content stretch evenly
+  height: '250px', // Adjusted height for a more balanced look
+  width: '100%',
+  display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'space-between' // Space out the content evenly
-});
+  justifyContent: 'space-between',
+  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+  borderRadius: '12px',
+  padding: '16px',
+  backgroundColor: '#fff',
+}));
 
 // Styled components for card elements
-const CardTitle = styled(Typography)({
+const CardTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: 'Poppins',
+  fontSize: '16px',
+  fontWeight: '600',
+  lineHeight: '24px',
+  textAlign: 'center',
+  color: '#333',
+  marginBottom: '8px',
+}));
+
+const CardDescription = styled(Typography)(({ theme }) => ({
+  fontFamily: 'Poppins',
+  fontSize: '14px',
+  fontWeight: '300',
+  lineHeight: '22px',
+  textAlign: 'center',
+  color: '#555',
+  marginBottom: '16px',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  display: '-webkit-box',
+  WebkitBoxOrient: 'vertical',
+  WebkitLineClamp: 3,
+}));
+
+const CardButton = styled(Button)(({ theme }) => ({
   fontFamily: 'Poppins',
   fontSize: '14px',
   fontWeight: '500',
   lineHeight: '21px',
-  textAlign: 'left',
-  marginBottom: '25px' 
-});
+  backgroundColor: '#264e89',
+  color: '#fff',
+  textTransform: 'capitalize',
+  padding: '8px 16px',
+  borderRadius: '8px',
+  marginTop: 'auto', // Pushes button to the bottom
+  alignSelf: 'center', // Centers the button horizontally
+  boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+  '&:hover': {
+    backgroundColor: '#1e3a6b',
+  },
+}));
 
-const CardDescription = styled(Typography)({
+// Styled breadcrumbs
+const StyledBreadcrumbs = styled(Breadcrumbs)(({ theme }) => ({
+  marginBottom: '24px',
   fontFamily: 'Poppins',
   fontSize: '14px',
-  fontWeight: '300',
+  fontWeight: '600',
   lineHeight: '21px',
-  textAlign: 'left',
-  flexGrow: 1, 
-  marginBottom: '25px' 
-});
+  color: '#3956a5',
+  '& .MuiBreadcrumbs-ol': {
+    padding: '0',
+    margin: '0',
+  },
+  '& .MuiBreadcrumbs-li': {
+    fontWeight: 'normal',
+  },
+  '& .MuiBreadcrumbs-separator': {
+    color: '#3956a5',
+  },
+}));
 
-const CardButton = styled(Button)({
+const CurrentPage = styled(Typography)(({ theme }) => ({
   fontFamily: 'Poppins',
   fontSize: '14px',
-  fontWeight: '400',
+  fontWeight: '600',
   lineHeight: '21px',
-  textAlign: 'left',
-  backgroundColor: '#264e89', // Set button color
-  color: '#fff', // Set button text color for contrast
-  alignSelf: 'flex-start', // Button stays at the bottom
-  marginTop: 'auto' // Ensures it stays at the bottom with a gap above it if content grows
-});
-
+  color: '#3956a5',
+}));
 
 const Migrate = () => {
   const [cards, setCards] = useState([]);
@@ -65,68 +108,71 @@ const Migrate = () => {
   };
 
   return (
-    // <Box
-    //   sx={{
-    //     padding: { xs: '20px', sm: '40px' },
-    //     backgroundColor: '#f8f8f8', // Gray background
-    //     marginTop: '20px',
-    //     minHeight: '100vh' // Set minimum height of the background
-    //   }}
-    // >
+    <Box
+      sx={{
+        backgroundColor: '#e0e0e0', // Gray background covering the entire page
+        margin: 0,
+        padding: 0,
+        width: '100%',
+        height: 'auto', // Full viewport height
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
       <Box
         sx={{
-          backgroundColor: '#f8f8f8',
           padding: { xs: '20px', sm: '40px' },
-          maxWidth: '100%',
-          height:'100%',
-          margin: '0 auto',
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-          borderRadius: '16px',
-          marginTop: '50px',
+          maxWidth: '1200px',
+          width: '100%', // Ensure full width
         }}
       >
+        {/* Breadcrumbs positioned at the top left corner */}
+        <Box sx={{ marginBottom: '24px', marginTop: '38px' }}>
+          <StyledBreadcrumbs aria-label="breadcrumb">
+            <Link href="/">Home</Link>
+            <Link href="/Cloudo">Cloud-Offer</Link>
+            <CurrentPage>Migrate-Modernize</CurrentPage>
+          </StyledBreadcrumbs>
+        </Box>
+
+        {/* Title section */}
         <Typography
           variant="h4"
           align="center"
           sx={{
-            marginBottom: '20px',
+            marginBottom: '24px',
             fontFamily: 'Poppins',
-            fontSize: '14px',
-            fontWeight: '500',
-            lineHeight: '21px',
-            textAlign: 'center'
+            fontSize: '24px',
+            fontWeight: '600',
+            lineHeight: '32px',
+            color: '#333',
           }}
         >
           Migrate-Modernize Overview
         </Typography>
-        <Typography
-          variant="body1"
-          align="center"
-          sx={{
-            marginBottom: '40px',
-            fontFamily: 'Poppins',
-            fontSize: '14px',
-            fontWeight: '400',
-            lineHeight: '22px',
-            textAlign: 'center'
-          }}
-        >
-          Here is an overview of our Migrate-Modernize objectives. Explore the details and take action through the buttons provided.
-        </Typography>
 
-        <Grid container spacing={2} justifyContent="center">
+        {/* Cards section */}
+        <Grid container spacing={3} justifyContent="center">
           {cards.map((card, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              key={index}
+              sx={{ marginBottom: index === cards.length - 1 ? '40px' : '0' }}
+            >
               <HoverCard>
-                <CardContent>
-                  <CardTitle variant="h6" gutterBottom>
+                <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <CardTitle variant="h6">
                     {card.title}
                   </CardTitle>
-                  <CardDescription variant="body2" color="textSecondary">
+                  <CardDescription variant="body2">
                     {card.description}
                   </CardDescription>
-                  <CardButton variant="contained" onClick={handleButtonClick} style={{ marginTop: '10px' }}>
-                    {card.buttonText}
+                  <CardButton variant="contained" onClick={handleButtonClick}>
+                    {card.buttonText.charAt(0).toUpperCase() + card.buttonText.slice(1).toLowerCase()}
                   </CardButton>
                 </CardContent>
               </HoverCard>
@@ -134,7 +180,7 @@ const Migrate = () => {
           ))}
         </Grid>
       </Box>
-    // </Box>
+    </Box>
   );
 };
 

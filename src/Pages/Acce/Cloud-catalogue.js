@@ -49,9 +49,9 @@ const Catalog = () => {
           marginTop: '100px',
           marginBottom: '40px',
           fontFamily: 'Poppins',
-          fontSize: '14px',
+          fontSize: '16px',
           fontWeight: '600',
-          lineHeight: '21px',
+          lineHeight: '24px',
           textAlign: 'center',
         }}
       >
@@ -60,7 +60,7 @@ const Catalog = () => {
 
       <Grid container spacing={3} justifyContent="center" sx={{ flexGrow: 1 }}>
         {objectives.map((objective, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid item xs={12} sm={6} md={4} key={index} sx={{ marginBottom: index === objectives.length - 1 ? '40px' : '0' }}>
             <Card
               sx={{
                 maxWidth: 345,
@@ -71,26 +71,35 @@ const Catalog = () => {
                 transition: 'transform 0.3s ease-in-out',
                 borderRadius: '16px',
                 margin: '0 auto',
+                padding: '16px',
+                boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+                backgroundColor: '#ffffff',
                 '&:hover': {
                   transform: 'scale(1.05)',
                 },
               }}
             >
               <CardContent sx={{ flexGrow: 1 }}>
+                {/* Title */}
                 <Typography
                   variant="h6"
                   sx={{
                     fontFamily: 'Poppins',
                     fontSize: '14px',
-                    fontWeight: '600',
+                    fontWeight: '500',
                     lineHeight: '21px',
                     textAlign: 'center',
                     color: 'black',
                     marginBottom: '10px',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {objective.title}
                 </Typography>
+
+                {/* Image */}
                 <Box
                   sx={{
                     display: 'flex',
@@ -104,28 +113,37 @@ const Catalog = () => {
                     style={{ maxWidth: '100%', height: 'auto', maxHeight: '100px' }}
                   />
                 </Box>
+
+                {/* Description */}
                 <Typography
                   variant="body2"
                   sx={{
                     fontFamily: 'Poppins',
                     fontSize: '14px',
-                    fontWeight: '400',
+                    fontWeight: '300',
                     lineHeight: '21px',
                     textAlign: 'center',
                     color: 'black',
-                    marginBottom: '0px',
+                    marginBottom: '20px',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    display: '-webkit-box',
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 2,
                   }}
                 >
                   {objective.description}
                 </Typography>
               </CardContent>
+
+              {/* Know More Text aligned to the right */}
               <Box
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'flex-end',
                   paddingRight: '16px',
-                  paddingBottom: '30px',
+                  paddingBottom: '16px',
                 }}
               >
                 <Typography
@@ -133,7 +151,7 @@ const Catalog = () => {
                   sx={{
                     fontFamily: 'Poppins',
                     fontSize: '14px',
-                    fontWeight: '600',
+                    fontWeight: '400',
                     color: '#3956a5',
                     textDecoration: 'none',
                     display: 'flex',
