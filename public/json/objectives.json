@@ -1,36 +1,36 @@
 [
   {
-    "image": "/images/Cloud-Strategy.gif",
+    "image": "./Image/Strategy.gif",
     "title": "Cloud Offerings",
     "description": "Comprehensive cloud services like computing, storage, and networking for business needs.",
     "link": "/Offer"
   },
   {
-    "image": "/images/Cloud-Strategy.gif",
+    "image": "./Image/Strategy.gif",
     "title": "Delivery Kits",
     "description": "Tools and templates for faster cloud deployment and efficient implementation.",
     "link": "https://example.com/2"
   },
   {
-    "image": "/images/Cloud-Strategy.gif",
+    "image": "./Image/Strategy.gif",
     "title": "Accelerators",
     "description": "Pre-built solutions to speed up cloud adoption and development processes.",
     "link": "https://example.com/2"
   },
   {
-    "image": "/images/Cloud-Strategy.gif",
+    "image": "./Image/Strategy.gif",
     "title": "Case Studies",
     "description": "Real-world examples of successful cloud implementations and outcomes.",
     "link": "https://example.com/2"
   },
   {
-    "image": "/images/Cloud-Strategy.gif",
+    "image": "./Image/Strategy.gif",
     "title": "Reference Architectures",
     "description": "Cloud design blueprints for building secure and scalable infrastructures.",
     "link": "https://example.com/3"
   },
   {
-    "image": "/images/Cloud-Strategy.gif",
+    "image": "./Image/Strategy.gif",
     "title": "White Papers/ PoVs",
     "description": "Expert reports on cloud trends, strategies, and best practices.",
     "link": "https://example.com/3"
