@@ -20,7 +20,9 @@ const Home = () => {
         padding: { xs: '0', sm: '0' },
         margin: '0',
         backgroundColor: '#f0f0f0',
-        Height: '100vh',
+        height: '100vh',
+        overflow: 'auto',
+        paddingRight: '16px', // Prevent overlap with sidebar
       }}
     >
       <Box
@@ -28,7 +30,7 @@ const Home = () => {
           position: 'relative',
           width: '100%',
           height: '300px',
-          marginBottom: '5px',
+          marginBottom: '20px',
           marginTop: '65px',
           overflow: 'hidden',
           padding: '0',
@@ -36,15 +38,15 @@ const Home = () => {
         }}
       >
         <img
-          src="./Image/Home.webp" 
+          src="./Image/Home.webp"
           alt="CloudNxt"
-          style={{ 
-            width: '100%', 
-            marginLeft: '1px',
-            height: '100%', 
+          style={{
+            width: '100%',
+            height: '100%',
             objectFit: 'cover',
             display: 'block',
-            boxSizing: 'border-box',
+            margin: '0 auto',
+            padding: '0',
           }}
         />
         <Box
@@ -53,6 +55,9 @@ const Home = () => {
             top: '100px',
             left: '20px',
             color: 'white',
+            padding: '20px',
+            borderRadius: '8px',
+            maxWidth: '80%', // Ensure overlay text fits well on various screen sizes
           }}
         >
           <Typography
@@ -87,7 +92,7 @@ const Home = () => {
               color: 'black',
               fontFamily: 'Poppins',
               fontSize: '14px',
-              fontWeight: '600',
+              fontWeight: '400',
               textTransform: 'none',
               borderRadius: '8px',
               padding: '10px 20px',
@@ -110,45 +115,63 @@ const Home = () => {
           marginTop: '20px',
           marginBottom: '40px',
           fontFamily: 'Poppins',
-          fontSize: '14px',
+          fontSize: '16px',
           fontWeight: '600',
-          lineHeight: '21px',
+          lineHeight: '24px',
           textAlign: 'center',
         }}
       >
-        What we Offer's
+        What We Offer
       </Typography>
 
-      <Grid container spacing={3} justifyContent="center">
+      <Grid container spacing={3} justifyContent="center"> {/* Reduced spacing to 2 */}
         {objectives.map((objective, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
             <Card
               sx={{
-                maxWidth: 345,
-                height: '300px',
+                width: '370px', // Fixed width for cards
+                height: '350px', // Fixed height for consistency
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 transition: 'transform 0.3s ease-in-out',
                 borderRadius: '16px',
-                margin: '0 auto',
+                padding: '16px',
+                boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+                backgroundColor: '#ffffff',
+                overflow: 'hidden', // Hide any overflow
                 '&:hover': {
                   transform: 'scale(1.05)',
-                }
+                },
+                // Responsive max-width
+                '@media (max-width: 600px)': {
+                  width: '90%', // Full width on small screens
+                },
               }}
             >
-              <CardContent sx={{ flexGrow: 1 }}>
+              <CardContent
+                sx={{
+                  flexGrow: 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  overflow: 'hidden', // Hide any overflow within CardContent
+                }}
+              >
                 {/* Title */}
                 <Typography
                   variant="h6"
                   sx={{
                     fontFamily: 'Poppins',
                     fontSize: '14px',
-                    fontWeight: '600',
+                    fontWeight: '500',
                     lineHeight: '21px',
-                    textAlign: 'center',
                     color: 'black',
                     marginBottom: '10px',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis', // Truncate text if it overflows
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {objective.title}
@@ -165,7 +188,13 @@ const Home = () => {
                   <img
                     src={objective.image}
                     alt={objective.title}
-                    style={{ maxWidth: '100%', height: 'auto', maxHeight: '100px' }}
+                    style={{
+                      maxWidth: '100%',
+                      height: 'auto',
+                      maxHeight: '100px',
+                      marginBottom: '10px',
+                      objectFit: 'contain', // Ensure image fits well within the box
+                    }}
                   />
                 </Box>
 
@@ -175,11 +204,15 @@ const Home = () => {
                   sx={{
                     fontFamily: 'Poppins',
                     fontSize: '14px',
-                    fontWeight: '400',
+                    fontWeight: '300',
                     lineHeight: '21px',
-                    textAlign: 'center',
                     color: 'black',
                     marginBottom: '20px',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis', // Truncate text if it overflows
+                    display: '-webkit-box',
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 2, // Limit the number of lines for description
                   }}
                 >
                   {objective.description}
@@ -202,7 +235,9 @@ const Home = () => {
                   sx={{
                     fontFamily: 'Poppins',
                     fontSize: '14px',
-                    fontWeight: '600',
+                    fontWeight: '400',
+                    lineHeight: '21px',
+                    textAlign: 'left',
                     color: '#3956a5',
                     textDecoration: 'none',
                     display: 'flex',
@@ -216,6 +251,16 @@ const Home = () => {
           </Grid>
         ))}
       </Grid>
+
+      {/* Extra Space for the last card */}
+      <Box
+        sx={{
+          backgroundColor: '#f0f0f0',
+          height: '20px',
+          marginTop: '20px',
+          marginBottom: '20px',
+        }}
+      />
     </Box>
   );
 };
