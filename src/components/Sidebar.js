@@ -95,7 +95,7 @@ export default function DrawerComponent({ open, handleDrawerClose, openSubMenu, 
       <List>
         {[ 
           { key: 'Home', icon: faHouse, text: 'Home', path: '/' },
-          { key: 'Cloud Offerings', icon: faCloud, text: 'Cloud Offerings', path: '/Offer' },
+          { key: 'Cloud Offerings', icon: faCloud, text: 'Cloud Offerings', path: '/Cloudo' },
           {
             key: 'Delivery Kits',
             icon: faHammer,
