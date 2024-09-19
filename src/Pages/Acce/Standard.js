@@ -129,7 +129,17 @@ const EditorAccordion = () => {
           sx={{ marginBottom: "10px" }}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>{section}</Typography>
+            <Typography
+              sx={{
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: '14px',
+                fontWeight: 400,
+                lineHeight: '21px',
+                textAlign: 'left',
+              }}
+            >
+              {section}
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Box sx={{ position: "relative" }}>
@@ -148,6 +158,12 @@ const EditorAccordion = () => {
                     backgroundColor: isEditorVisible[section] ? "#3956A5" : "#fff",
                     color: isEditorVisible[section] ? "#fff" : "#000",
                     borderColor: isEditorVisible[section] ? "#3956A5" : "#ccc",
+                    fontFamily: 'Poppins, sans-serif',
+                    fontSize: '14px',
+                    fontWeight: 400,
+                    lineHeight: '21px',
+                    textAlign: 'left',
+                    textTransform: 'capitalize', // Capitalize the first letter
                   }}
                 >
                   Editor
@@ -159,6 +175,12 @@ const EditorAccordion = () => {
                     backgroundColor: !isEditorVisible[section] ? "#3956A5" : "#fff",
                     color: !isEditorVisible[section] ? "#fff" : "#000",
                     borderColor: !isEditorVisible[section] ? "#3956A5" : "#ccc",
+                    fontFamily: 'Poppins, sans-serif',
+                    fontSize: '14px',
+                    fontWeight: 400,
+                    lineHeight: '21px',
+                    textAlign: 'left',
+                    textTransform: 'capitalize', // Capitalize the first letter
                   }}
                 >
                   Visual
@@ -185,6 +207,12 @@ const EditorAccordion = () => {
                         backgroundColor: "#fff",
                         color: "#3956A5",
                         border: `1px solid #3956A5`,
+                        fontFamily: 'Poppins, sans-serif',
+                        fontSize: '14px',
+                        fontWeight: 400,
+                        lineHeight: '21px',
+                        textAlign: 'left',
+                        textTransform: 'capitalize', // Capitalize the first letter
                         '&:hover': {
                           backgroundColor: "#e0e0e0",
                         },
@@ -199,6 +227,12 @@ const EditorAccordion = () => {
                         backgroundColor: "#fff",
                         color: "#3956A5",
                         border: `1px solid #3956A5`,
+                        fontFamily: 'Poppins, sans-serif',
+                        fontSize: '14px',
+                        fontWeight: 400,
+                        lineHeight: '21px',
+                        textAlign: 'left',
+                        textTransform: 'capitalize', // Capitalize the first letter
                         '&:hover': {
                           backgroundColor: "#e0e0e0",
                         },

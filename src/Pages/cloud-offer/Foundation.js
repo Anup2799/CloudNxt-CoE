@@ -20,30 +20,33 @@ const HoverCard = styled(Card)(({ theme }) => ({
   backgroundColor: '#fff',
 }));
 
-// Styled components for card elements
+// Updated styled components for card elements
 const CardTitle = styled(Typography)(({ theme }) => ({
   fontFamily: 'Poppins',
-  fontSize: '16px',
-  fontWeight: '600',
-  lineHeight: '24px',
+  fontSize: '14px',
+  fontWeight: '500',
+  lineHeight: '21px',
   textAlign: 'center',
-  color: '#333',
-  marginBottom: '8px',
+  color: 'black',
+  marginBottom: '10px',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
 }));
 
 const CardDescription = styled(Typography)(({ theme }) => ({
   fontFamily: 'Poppins',
   fontSize: '14px',
   fontWeight: '300',
-  lineHeight: '22px',
+  lineHeight: '21px',
   textAlign: 'center',
-  color: '#555',
-  marginBottom: '16px',
+  color: 'black',
+  marginBottom: '20px',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   display: '-webkit-box',
   WebkitBoxOrient: 'vertical',
-  WebkitLineClamp: 3,
+  WebkitLineClamp: 2,
 }));
 
 const CardButton = styled(Button)(({ theme }) => ({
@@ -125,16 +128,14 @@ const Foundation = () => {
         sx={{
           position: 'fixed', // Fixed positioning for breadcrumbs
           top: '100px', // Distance from the top
-          left: '250px', // Distance from the left
+          left: '270px', // Distance from the left
           zIndex: 1, // Ensure breadcrumbs are above other content
-          
-          padding: '8px 16px', // Optional: add padding for better readability
         }}
       >
         <StyledBreadcrumbs aria-label="breadcrumb">
           <Link href="/">Home</Link>
           <Link href="/Cloudo">Cloud-Offer</Link>
-          <CurrentPage> Foundation</CurrentPage>
+          <CurrentPage>Foundation</CurrentPage>
         </StyledBreadcrumbs>
       </Box>
 
@@ -179,12 +180,16 @@ const Foundation = () => {
             >
               <HoverCard>
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  {/* Title */}
                   <CardTitle variant="h6">
                     {card.title}
                   </CardTitle>
+
+                  {/* Description */}
                   <CardDescription variant="body2">
                     {card.description}
                   </CardDescription>
+
                   <CardButton variant="contained" onClick={handleButtonClick}>
                     {card.buttonText.charAt(0).toUpperCase() + card.buttonText.slice(1).toLowerCase()}
                   </CardButton>
