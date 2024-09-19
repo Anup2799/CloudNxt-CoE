@@ -1,0 +1,19 @@
+version: 0.2
+ 
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies..."
+      - npm install  # Use npm install if you prefer it over npm ci
+  build:
+    commands:
+      - echo "Building the React app..."
+      - npm run build  # Standard command for React build
+  post_build:
+    commands:
+      - echo "Build completed!"
+ 
+artifacts:
+  files:
+    - '**/*'  # Includes all files generated during build
+  base-directory: build  # React app default build directory
