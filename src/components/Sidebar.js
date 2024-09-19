@@ -9,7 +9,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faCloud, faHammer, faRocket, faBook, faFileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-const drawerWidth = 260; // Updated sidebar width
+const drawerWidth = 256; // Updated sidebar width
 
 // Define the keyframes for hover animation
 const hoverAnimation = keyframes`
