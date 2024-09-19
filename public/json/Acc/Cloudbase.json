@@ -1,24 +1,24 @@
 [
     {
-      "image": "./Image/Offer.gif",
+      "image": "./Image/Cloudo.gif",
       "title": "Standard",
       "description": "Description of objective 1.",
       "link": "/Standard"
     },
     {
-      "image": "./Image/Offer.gif",
+      "image": "./Image/Cloudo.gif",
       "title": "Healthcare",
       "description": "Description of objective 2.",
       "link": "/Standard"
     },
     {
-      "image": "./Image/Offer.gif",
+      "image": "./Image/Cloudo.gif",
       "title": "Finance",
       "description": "Description of objective 2.",
       "link": "/Standard"
     },
     {
-      "image": "./Image/Offer.gif",
+      "image": "./Image/Cloudo.gif",
       "title": "US Government",
       "description": "Description of objective 2.",
       "link": "/Standard"
