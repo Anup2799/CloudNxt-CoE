@@ -1,15 +1,15 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom'; // Import useNavigate and useLocation
-import { styled, keyframes } from '@mui/material/styles'; // Import keyframes for animation
-import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, IconButton, Drawer, Divider } from '@mui/material'; // Import Divider
+import { useNavigate, useLocation } from 'react-router-dom';
+import { styled, keyframes } from '@mui/material/styles';
+import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, IconButton, Drawer, Divider } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faCloud, faHammer, faRocket, faBook, faFileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'; // Import necessary icons
+import { faHouse, faCloud, faHammer, faRocket, faBook, faFileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-const drawerWidth = 260; // Default sidebar width
+const drawerWidth = 260; // Updated sidebar width
 
 // Define the keyframes for hover animation
 const hoverAnimation = keyframes`
@@ -31,11 +31,11 @@ const CustomDrawer = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'ope
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  overflow: 'auto', // Enable scrollbar when needed
+  overflow: 'auto',
   '& .MuiDrawer-paper': {
     width: open ? drawerWidth : theme.spacing(7),
-    backgroundColor: '#3956A5', // Sidebar background color
-    overflow: 'auto', // Enable scrollbar when needed
+    backgroundColor: '#3956A5',
+    overflow: 'auto',
   },
 }));
 
@@ -48,31 +48,29 @@ const textStyle = {
   color: 'white',
 };
 
-// Updated hover style with animation
 const hoverStyle = {
   '&:hover': {
-    animation: `${hoverAnimation} 0.3s forwards`, // Apply hover animation on hover
+    animation: `${hoverAnimation} 0.3s forwards`,
   },
 };
 
 const activeTextStyle = {
-  color: '#ffb6c1', // Active text color
+  color: '#ffb74d',
 };
 
 const activeIconStyle = {
-  color: '#ffb6c1', // Active icon color
+  color: '#ffb74d',
 };
 
 export default function DrawerComponent({ open, handleDrawerClose, openSubMenu, handleClick }) {
   const navigate = useNavigate();
-  const location = useLocation(); // Get current route path
+  const location = useLocation();
 
   const handleSubMenuClick = (item, path) => {
     navigate(path);
   };
 
   const handleMenuItemClick = (key, path) => {
-    // Toggle submenu if it has items
     if (['Delivery Kits', 'Accelerators'].includes(key)) {
       handleClick(key);
     } else {
@@ -80,10 +78,8 @@ export default function DrawerComponent({ open, handleDrawerClose, openSubMenu, 
     }
   };
 
-  // Check if the current path matches a sub-menu item's path
   const isSubMenuActive = (items) => items && items.some(({ path }) => location.pathname === path);
-
-  const isActive = (path) => location.pathname === path; // Check if route matches
+  const isActive = (path) => location.pathname === path;
 
   return (
     <CustomDrawer variant="permanent" open={open}>
@@ -93,7 +89,7 @@ export default function DrawerComponent({ open, handleDrawerClose, openSubMenu, 
         </IconButton>
       </Box>
       <List>
-        {[ 
+        {[
           { key: 'Home', icon: faHouse, text: 'Home', path: '/' },
           { key: 'Cloud Offerings', icon: faCloud, text: 'Cloud Offerings', path: '/Cloudo' },
           {
@@ -129,9 +125,9 @@ export default function DrawerComponent({ open, handleDrawerClose, openSubMenu, 
               button
               onClick={() => handleMenuItemClick(key, path)}
               disablePadding
-              sx={{ 
-                ...hoverStyle, 
-                ...(isActive(path) || isSubMenuActive(items) ? { backgroundColor: '#001652' } : {}) // Highlight active item and its parent
+              sx={{
+                ...hoverStyle,
+                ...(isActive(path) || isSubMenuActive(items) ? { backgroundColor: '#001652' } : {}),
               }}
             >
               <ListItemButton
@@ -146,18 +142,18 @@ export default function DrawerComponent({ open, handleDrawerClose, openSubMenu, 
                     minWidth: 0,
                     justifyContent: 'center',
                     ...(open ? { mr: 3 } : { mr: 'auto' }),
-                    ...(isActive(path) || isSubMenuActive(items) ? activeIconStyle : { color: 'white' }), // Apply active color
+                    ...(isActive(path) || isSubMenuActive(items) ? activeIconStyle : { color: 'white' }),
                   }}
                 >
                   <FontAwesomeIcon icon={icon} />
                 </ListItemIcon>
-                <ListItemText 
-                  primary={text} 
-                  sx={{ 
-                    ...textStyle, 
+                <ListItemText
+                  primary={text}
+                  sx={{
+                    ...textStyle,
                     ...(open ? { opacity: 1 } : { opacity: 0 }),
-                    ...(isActive(path) || isSubMenuActive(items) ? activeTextStyle : {}), // Apply active color
-                  }} 
+                    ...(isActive(path) || isSubMenuActive(items) ? activeTextStyle : {}),
+                  }}
                 />
                 {items && open && (openSubMenu[key] ? <ExpandLess sx={{ color: 'white' }} /> : <ExpandMore sx={{ color: 'white' }} />)}
               </ListItemButton>
@@ -168,10 +164,10 @@ export default function DrawerComponent({ open, handleDrawerClose, openSubMenu, 
                   <ListItem
                     key={text}
                     disablePadding
-                    sx={{ 
-                      pl: 4, 
-                      ...hoverStyle, 
-                      ...(isActive(path) ? { backgroundColor: '#001652' } : {}) // Highlight active sub-menu item
+                    sx={{
+                      pl: 4,
+                      ...hoverStyle,
+                      ...(isActive(path) ? { backgroundColor: '#001652' } : {}),
                     }}
                   >
                     <ListItemButton onClick={() => handleSubMenuClick(text, path)}>
@@ -184,10 +180,8 @@ export default function DrawerComponent({ open, handleDrawerClose, openSubMenu, 
           </React.Fragment>
         ))}
 
-        {/* Divider to separate menu from the email section */}
         <Divider sx={{ backgroundColor: 'white', marginY: 2 }} />
 
-        {/* Email section with clickable mailto link */}
         <ListItem disablePadding sx={{ ...hoverStyle }}>
           <ListItemButton
             sx={{
@@ -196,7 +190,7 @@ export default function DrawerComponent({ open, handleDrawerClose, openSubMenu, 
               ...(open ? { justifyContent: 'initial' } : { justifyContent: 'center' }),
             }}
             component="a"
-            href="mailto:cloudcoe@zensar.com" // Make the email clickable
+            href="mailto:cloudcoe@zensar.com"
           >
             <ListItemIcon
               sx={{

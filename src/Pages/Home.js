@@ -19,7 +19,7 @@ const Home = () => {
       sx={{
         padding: { xs: '0', sm: '0' },
         margin: '0',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#e1f5fe',
         height: '100vh',
         overflow: 'auto',
         paddingRight: '16px', // Prevent overlap with sidebar
@@ -98,7 +98,7 @@ const Home = () => {
               padding: '10px 20px',
               boxShadow: 'none',
               '&:hover': {
-                backgroundColor: '#f0f0f0',
+                backgroundColor: '#e1f5fe',
                 boxShadow: 'none',
               }
             }}
@@ -255,7 +255,7 @@ const Home = () => {
       {/* Extra Space for the last card */}
       <Box
         sx={{
-          backgroundColor: '#f0f0f0',
+          backgroundColor: '#e1f5fe',
           height: '20px',
           marginTop: '20px',
           marginBottom: '20px',

@@ -37,7 +37,7 @@ const Catalog = () => {
         flexDirection: 'column',
         padding: '0',
         margin: '0',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#ffcc80', // AWS orange color
         minHeight: '100vh',
         height: '100%',
       }}
@@ -55,7 +55,7 @@ const Catalog = () => {
           textAlign: 'center',
         }}
       >
-        Cloud-Catalogue | What we Offer's
+        Cloud-Catalogue | What we Offer
       </Typography>
 
       <Grid container spacing={3} justifyContent="center" sx={{ flexGrow: 1 }}>

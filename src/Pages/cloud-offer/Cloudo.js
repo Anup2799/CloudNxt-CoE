@@ -24,7 +24,7 @@ const Cloudo = () => {
         flexDirection: 'column',
         padding: '0',
         margin: '0',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#e1f5fe',
         minHeight: '100vh',
         height: '100%',
       }}
