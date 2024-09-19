@@ -56,7 +56,7 @@ export default function CustomAppBar({ open, handleDrawerOpen }) {
         {/* Right: Image */}
         <Box>
           <img
-            src="/images/Zensar-logo.png" // Updated path for your image
+            src="./Image/Zensar-logo.png" // Updated path for your image
             alt="Zensar Logo"
             style={{
               height: '60px', // Adjust the height of the image to fit within the header (toolbar height is 64px)
