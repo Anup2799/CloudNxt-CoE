@@ -3,15 +3,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MiniDrawer from './components/MiniDrawer'; // Ensure this import matches your component
 import Home from './Pages/Home';
 import Strategy from './Pages/cloud-offer/Strategy';
-import Foundation from './Pages/cloud-offer/Foundation'; 
+import Foundation from './Pages/cloud-offer/Foundation';
 import Migrate from './Pages/cloud-offer/Migrate-Modernize';
 import Operations from './Pages/cloud-offer/Operations';
 import Catelog from './Pages/Acce/Cloud-catalogue';
-import Cloudo from './Pages/cloud-offer/Cloudo';
+import Cloudo from './Pages/cloud-offer/Cloudo';  // Ensure the path and case are correct
 import From from './Pages/From-page/From';
 import Cloudbase from './Pages/Acce/Cloudbase';
-import Standard from './Pages/Acce/Standard'
-
+import Standard from './Pages/Acce/Standard';
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -45,7 +44,7 @@ function App() {
             <Route path="/Migrate-Modernize" element={<Migrate />} />
             <Route path="/Operations" element={<Operations />} />
             <Route path="/Cloud-catelog" element={<Catelog />} />
-            <Route path="/Cloudo" element={<Cloudo />} />
+            <Route path="/Cloudo" element={<Cloudo />} /> {/* Correct path */}
             <Route path="/Cloudbase" element={<Cloudbase/>} />
             <Route path="/From" element={<From />} />
             <Route path="/Standard" element={<Standard />} />
